@@ -54,20 +54,20 @@ module main() {
     difference() {
         translate([0, 0, 0])
             cube([holder_length, diameter, total_spacing + diameter], center=false);
-        
+
         translate([0, -0.5, diameter])
             cube([holder_length, diameter+1, total_spacing - diameter], center=false);
-    }        
-    
+    }
+
     // 支撑座弯曲部分
     translate([holder_length + diameter, -spacing + radius, 0])
         intersection() {
             cylinder(h = total_spacing + diameter, r = radius * 2);
-            
+
             rotate([90, 0, 0])
             cube(total_spacing + diameter);
         }
-    
+
     translate([holder_length + diameter, -spacing + radius, 0])
         cube([diameter, diameter * 2, total_spacing + diameter]);
 }
