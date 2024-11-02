@@ -16,20 +16,20 @@ $fn = 64;
 
 // 创建连接器
 module connector() {
-    translate([-diameter, diameter*2, 0])
+    translate([-diameter, diameter+radius, 0])
         rotate([90, 0, 0])
-        cylinder(h = diameter, d = diameter - error);
+        cylinder(h = radius, d = diameter - error);
     translate([0, diameter, 0])
         rotate([0, 0, 180])
         rotate_extrude(angle=90, convexity=10)
         translate([diameter, 0])
         circle(d = diameter - error);
-    
-    main_length = spacing + diameter + margin * 2;
-    
-    translate([0, -main_length+(radius+margin), -radius])
+
+    main_length = spacing + diameter + margin;
+
+    translate([0, -(main_length - radius - margin), -radius])
         cube([diameter, main_length, diameter]);
-    
+
     translate([-diameter, -spacing, 0])
         rotate([90, 0, 90])
         cylinder(h = diameter, d = diameter - error);
