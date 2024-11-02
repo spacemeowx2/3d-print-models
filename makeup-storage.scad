@@ -1,8 +1,8 @@
 // 定义长方体的尺寸
-length = 112;
-width = 156;
-height = 50;
-grid_size = 20;
+length = 130;
+width = 66;
+height = 80;
+grid_size = 30;
 divider_thickness = 2;
 
 // 创建长方体
