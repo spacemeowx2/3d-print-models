@@ -5,7 +5,7 @@ diameter = radius * 2;
 // 误差, 留点距离给打印误差
 error = 0.4;
 // 宽度, 乘以间距
-span = 2;
+span = 3;
 
 // 孔洞间距 25mm
 spacing = 25;
@@ -15,7 +15,7 @@ margin = 2;
 // 托盘长度 45mm
 holder_length = 45;
 
-$fn = 64;
+$fn = 32;
 
 // 创建连接器
 module connector() {
