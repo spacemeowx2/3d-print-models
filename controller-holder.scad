@@ -4,13 +4,16 @@ radius = 3;
 diameter = radius * 2;
 // 误差, 留点距离给打印误差
 error = 0.4;
+// 宽度, 乘以间距
+span = 2;
 
 // 孔洞间距 25mm
 spacing = 25;
+total_spacing = spacing * (span - 1);
 // 主轴留边 2mm
 margin = 2;
-// 托盘长度 40mm
-holder_length = 40;
+// 托盘长度 45mm
+holder_length = 45;
 
 $fn = 64;
 
@@ -39,34 +42,34 @@ module main() {
     // 创建主体
     translate([0, 0, radius])
         connector();
-    translate([0, 0, radius + spacing])
+    translate([0, 0, radius + total_spacing])
         connector();
     translate([0, -radius, 0])
-        cube([diameter, diameter, spacing]);
+        cube([diameter, diameter, total_spacing]);
     translate([0, -radius-spacing, 0])
-        cube([diameter, diameter, spacing]);
+        cube([diameter, diameter, total_spacing]);
 
     // 支撑座
     translate([diameter, -spacing-radius, 0])
     difference() {
         translate([0, 0, 0])
-            cube([holder_length, diameter, spacing + diameter], center=false);
+            cube([holder_length, diameter, total_spacing + diameter], center=false);
         
         translate([0, -0.5, diameter])
-            cube([holder_length, diameter+1, spacing - diameter], center=false);
+            cube([holder_length, diameter+1, total_spacing - diameter], center=false);
     }        
     
     // 支撑座弯曲部分
     translate([holder_length + diameter, -spacing + radius, 0])
         intersection() {
-            cylinder(h = spacing + diameter, r = radius * 2);
+            cylinder(h = total_spacing + diameter, r = radius * 2);
             
             rotate([90, 0, 0])
-            cube(spacing + diameter);
+            cube(total_spacing + diameter);
         }
     
     translate([holder_length + diameter, -spacing + radius, 0])
-        cube([diameter, diameter * 2, spacing + diameter]);
+        cube([diameter, diameter * 2, total_spacing + diameter]);
 }
 
 main();
