@@ -1,20 +1,20 @@
 // 定义尺寸
-// 洞洞板孔直径 6mm
+// 洞洞板孔半径 3mm
 radius = 3;
-diameter = radius * 2;
-// 误差, 留点距离给打印误差
-error = 0.6;
+// 孔洞间距 25mm
+spacing = 25;
 // 宽度, 乘以间距
 span = 3;
 
-// 孔洞间距 25mm
-spacing = 25;
-total_spacing = spacing * (span - 1);
-// 主轴留边 2mm
+// 误差, 留点距离给打印误差
+error = 0.6;
+// 连接器留边 3mm
 margin = 3;
 // 托盘长度 45mm
 holder_length = 45;
 
+diameter = radius * 2;
+total_spacing = spacing * (span - 1);
 $fn = 32;
 
 // 创建连接器
@@ -74,4 +74,5 @@ module main() {
         };
 }
 
-main();
+rotate([90, 0, 0])
+    main();
