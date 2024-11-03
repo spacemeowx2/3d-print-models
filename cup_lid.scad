@@ -1,9 +1,14 @@
 // 定义杯盖的参数
-outer_diameter_top = 100; // 上部外径
-outer_diameter_bottom = 93; // 下部外径
-height_top = 2.5;          // 上部高度
-height_bottom = 2.5;       // 下部高度
-straw_hole_diameter = 10; // 吸管孔的直径
+// 上部外径
+outer_diameter_top = 100;
+// 下部外径
+outer_diameter_bottom = 93;
+// 上部高度
+height_top = 2.5;
+// 下部高度
+height_bottom = 2.5;
+// 吸管孔的直径
+straw_hole_diameter = 10;
 
 // 创建杯盖
 module cup_lid() {
