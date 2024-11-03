@@ -3,7 +3,7 @@
 radius = 3;
 diameter = radius * 2;
 // 误差, 留点距离给打印误差
-error = 0.4;
+error = 0.6;
 // 宽度, 乘以间距
 span = 3;
 
@@ -11,7 +11,7 @@ span = 3;
 spacing = 25;
 total_spacing = spacing * (span - 1);
 // 主轴留边 2mm
-margin = 2;
+margin = 3;
 // 托盘长度 45mm
 holder_length = 45;
 
@@ -19,9 +19,6 @@ $fn = 32;
 
 // 创建连接器
 module connector() {
-    translate([-diameter, diameter+radius, 0])
-        rotate([90, 0, 0])
-        cylinder(h = radius, d = diameter - error);
     translate([0, diameter, 0])
         rotate([0, 0, 180])
         rotate_extrude(angle=90, convexity=10)
@@ -33,9 +30,9 @@ module connector() {
     translate([0, -(main_length - radius - margin), -radius])
         cube([diameter, main_length, diameter]);
 
-    translate([-diameter, -spacing, 0])
+    translate([-radius, -spacing, 0])
         rotate([90, 0, 90])
-        cylinder(h = diameter, d = diameter - error);
+        cylinder(h = radius, d = diameter - error);
 }
 
 module main() {
@@ -68,8 +65,13 @@ module main() {
             cube(total_spacing + diameter);
         }
 
+    // 圆角头
     translate([holder_length + diameter, -spacing + radius, 0])
-        cube([diameter, diameter * 2, total_spacing + diameter]);
+        hull() {
+            cube([diameter, diameter, total_spacing + diameter]);
+            translate([radius, radius + diameter, 0])
+                cylinder(h = total_spacing + diameter, d = diameter);
+        };
 }
 
 main();
